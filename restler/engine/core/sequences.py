@@ -323,7 +323,9 @@ class Sequence(object):
             CUSTOM_LOGGING(self, candidate_values_pool)
 
         self._sent_request_data_list = []
-
+        # Note: tracked parameters is reset below because render() is only invoked once
+        # and the loop below always returns after one rendering.
+        request._tracked_parameters = {}
         for rendered_data, parser, tracked_parameters in\
                 request.render_iter(candidate_values_pool,
                                     skip=request._current_combination_id,
@@ -350,7 +352,7 @@ class Sequence(object):
             dependencies.reset_tlb()
 
             sequence_failed = False
-            request._tracked_parameters = tracked_parameters
+            request.update_tracked_parameters(tracked_parameters)
             # Step A: Static template rendering
             # Render last known valid combination of primitive type values
             # for every request until the last
@@ -360,7 +362,7 @@ class Sequence(object):
                     prev_request.render_current(candidate_values_pool,
                     preprocessing=preprocessing)
 
-                request._tracked_parameters.update(tracked_parameters)
+                request.update_tracked_parameters(tracked_parameters)
 
                 # substitute reference placeholders with resolved values
                 if not Settings().ignore_dependencies:

@@ -137,7 +137,9 @@
                               "payload": {
                                 "Fuzzable": [
                                   "Int",
-                                  "1000"
+                                  "1000",
+                                  null,
+                                  "population"
                                 ]
                               },
                               "isRequired": false,
@@ -162,7 +164,7 @@
                               "name": "strtest",
                               "payload": {
                                 "Fuzzable": [
-                                  "String",
+                                  "Bool",
                                   "true"
                                 ]
                               },
@@ -1424,7 +1426,8 @@
                                 "Fuzzable": [
                                   "Bool",
                                   "testval",
-                                  false
+                                  null,
+                                  "testbool"
                                 ]
                               },
                               "isRequired": true,
@@ -2041,7 +2044,9 @@
                               "payload": {
                                 "Fuzzable": [
                                   "DateTime",
-                                  "2020-1-1"
+                                  "2020-1-1",
+                                  "2020-2-2",
+                                  "datetest"
                                 ]
                               },
                               "isRequired": false,

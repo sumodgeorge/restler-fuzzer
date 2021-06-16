@@ -140,7 +140,7 @@
                                         "name": "strtest",
                                         "payload": {
                                           "Fuzzable": [
-                                            "String",
+                                            "Bool",
                                             "true"
                                           ]
                                         },
